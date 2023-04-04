@@ -9,10 +9,10 @@ Using Cloudflare Workers to send emails will allow you to send up to 100k emails
 
 Required environment variables:
 
-`AUTH_TOKEN` - Used for authenticating email requests
+`AUTH_TOKEN` - Used for authenticating HTTP requests
+
+`DOMAIN` - The domain you want to send emails from
+
+`DKIM_SELECTOR` - Your domain's DKIM selector
 
 `DKIM_KEY` - Your domain's private DKIM key to be able to sign emails
-
-`SENDER_EMAIL` - Which email to send emails from (e.g. "no-reply@meower.org")
-
-`SENDER_NAME` - Which name to send emails from (e.g. "Meower")

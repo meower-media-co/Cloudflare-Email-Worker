@@ -24,14 +24,14 @@ var send_default = {
           personalizations: [
             {
               to: [{ email: body.email, name: body.name }],
-              dkim_domain: "meower.org",
-              dkim_selector: "mailchannels",
+              dkim_domain: env.DOMAIN,
+              dkim_selector: env.DKIM_SELECTOR,
               dkim_private_key: env.DKIM_KEY
             },
           ],
           from: {
-            email: env.SENDER_EMAIL,
-            name: env.SENDER_NAME
+            email: body.senderEmail,
+            name: body.senderName
           },
           subject: body.subject,
           content: [
