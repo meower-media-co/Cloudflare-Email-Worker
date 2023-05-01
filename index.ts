@@ -21,25 +21,17 @@ var send_default = {
           "content-type": "application/json"
         },
         body: JSON.stringify({
+          from: body.sender,
           personalizations: [
             {
-              to: [{ email: body.email, name: body.name }],
-              dkim_domain: "meower.org",
-              dkim_selector: "mailchannels",
+              to: body.recipients,
+              dkim_domain: env.DOMAIN,
+              dkim_selector: env.DKIM_SELECTOR,
               dkim_private_key: env.DKIM_KEY
             },
           ],
-          from: {
-            email: env.SENDER_EMAIL,
-            name: env.SENDER_NAME
-          },
           subject: body.subject,
-          content: [
-            {
-              type: "text/html",
-              value: body.body
-            },
-          ],
+          content: body.content,
         }),
       });
     }
